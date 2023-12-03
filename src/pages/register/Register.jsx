@@ -4,6 +4,7 @@ import "./Register.scss";
 import newRequest from "../../utils/newRequest.js";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../../Components/navbar/Navbar";
+import toast from "react-hot-toast";
 
 function Register() {
  const [file, setFile] = useState(null);
@@ -32,15 +33,14 @@ function Register() {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-   //console.log(file)
+  
    const url = await upload(file);
-   console.log("url is : "+ url);
-  // const url = "https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o="
     try {
       await newRequest.post("/auth/register", {
         ...user,
         img: url,
       });
+    toast.success("User is Created Successfully !!");
       navigate("/")
     } catch (err) {
       console.log(err);
@@ -59,6 +59,7 @@ function Register() {
             type="text"
             placeholder="johndoe"
             onChange={handleChange}
+            required
           />
           <label htmlFor="">Email</label>
           <input
@@ -66,9 +67,10 @@ function Register() {
             type="email"
             placeholder="email"
             onChange={handleChange}
+            required
           />
           <label htmlFor="">Password</label>
-          <input name="password" type="password" onChange={handleChange} />
+          <input name="password" type="password" onChange={handleChange} required />
           <label htmlFor="">Profile Picture</label>
           <input type="file" onChange={(e) => setFile(e.target.files[0])} />
           <label htmlFor="">Country</label>
@@ -77,6 +79,7 @@ function Register() {
             type="text"
             placeholder="Usa"
             onChange={handleChange}
+            required
           />
           <button type="submit">Register</button>
         </div>
@@ -95,6 +98,7 @@ function Register() {
             type="text"
             placeholder="+1 234 567 89"
             onChange={handleChange}
+            required
           />
           <label htmlFor="">Description</label>
           <textarea
@@ -104,6 +108,7 @@ function Register() {
             cols="30"
             rows="10"
             onChange={handleChange}
+            required
           ></textarea>
         </div>
       </form>

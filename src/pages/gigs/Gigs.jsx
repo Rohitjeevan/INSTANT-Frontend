@@ -1,5 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
+import down from "../../img/down.png";
 import "./Gigs.scss";
+
+
 import GigCard from "../../Components/gigCard/GigCard.jsx";
 import { useQuery } from "@tanstack/react-query";
 import newRequest from "../../utils/newRequest";
@@ -25,7 +28,6 @@ function Gigs() {
         }),
   });
 
-  console.log(data);
 
   const reSort = (type) => {
     setSort(type);
@@ -61,7 +63,7 @@ function Gigs() {
               {sort === "sales" ? "Best Selling" : "Newest"}
             </span>
             
-            <img src="./img/down.png" alt="" onClick={() => setOpen(!open)} />
+            <img src={down} alt="" onClick={() => setOpen(!open)} />
             {open && (
               <div className="rightMenu">
                 {sort === "sales" ? (

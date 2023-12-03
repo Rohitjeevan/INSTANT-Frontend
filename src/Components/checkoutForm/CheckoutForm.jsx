@@ -6,11 +6,15 @@ import {
   useElements,
 } from "@stripe/react-stripe-js";
 
+
+
+
+
 const CheckoutForm = () => {
   const stripe = useStripe();
   const elements = useElements();
 
-  const [email, setEmail] = useState(null);
+  const [email, setEmail] = useState("");
   const [message, setMessage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -44,6 +48,11 @@ const CheckoutForm = () => {
       }
     });
   }, [stripe]);
+  
+
+  console.log(email)
+
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -72,29 +81,25 @@ const CheckoutForm = () => {
     if (error.type === "card_error" || error.type === "validation_error") {
       setMessage(error.message);
     } else {
+        console.log(error.message)
       setMessage("An unexpected error occurred.");
+
     }
 
     setIsLoading(false);
   };
 
-
-  console.log(email)
   const paymentElementOptions = {
     layout: "tabs",
-  };
-   
+  }
 
   return (
+    <>
     <form id="payment-form" onSubmit={handleSubmit}>
-      {/* <LinkAuthenticationElement
-        id="link-authentication-element"
-        onChange={(e) => setEmail(e.target.value)}
-      /> */}
       <LinkAuthenticationElement
-       id="link-authentication-element"
-        onChange={(event) => setEmail(event.value)}
-          />
+        id="link-authentication-element"
+        onChange={(e) => setEmail(e.value)}
+      />
       <PaymentElement id="payment-element" options={paymentElementOptions} />
       <button disabled={isLoading || !stripe || !elements} id="submit">
         <span id="button-text">
@@ -104,6 +109,8 @@ const CheckoutForm = () => {
       {/* Show any error or success messages */}
       {message && <div id="payment-message">{message}</div>}
     </form>
+
+    </>
   );
 };
 

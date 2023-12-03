@@ -3,10 +3,10 @@ import "./Home.scss";
 import Featured from "../../Components/featured/Featured";
 import TrustedBy from "../../Components/trustedBy/TrustedBy";
 import Slide from "../../Components/slide/Slide";
-import CatCard from "../../Components/catCard/CatCard";
+import CatCard from "../../Components/catCard/CatCard"
 import ProjectCard from "../../Components/projectCard/ProjectCard";
 import check from "../../img/check.png";
-import { cards, projects } from "../../data";
+import { projects ,cards} from "../../data";
 
 
 function Home() {
@@ -22,6 +22,12 @@ function Home() {
           <CatCard key={card.id} card={card} />
         ))}
       </Slide>
+
+      {/* <Slide slidesToShow={4} arrowsScroll={4}>
+        {projects.map((card) => (
+          <ProjectCard key={card.id} card={card} />
+        ))}
+      </Slide> */}
 
       <div className="features">
         <div className="container">

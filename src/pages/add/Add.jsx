@@ -5,6 +5,7 @@ import upload from "../../utils/upload";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import newRequest from "../../utils/newRequest";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const Add = () => {
   const [singleFile, setSingleFile] = useState(undefined);
@@ -19,6 +20,7 @@ const Add = () => {
       payload: { name: e.target.name, value: e.target.value },
     });
   };
+
   const handleFeature = (e) => {
     e.preventDefault();
     dispatch({
@@ -28,6 +30,9 @@ const Add = () => {
     });
     e.target[0].value = "";
   };
+
+
+
 
   const handleUpload = async () => {
     setUploading(true);
@@ -63,6 +68,7 @@ const Add = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     mutation.mutate(state);
+     toast.success("Gig Added Successfully ");
      navigate("/mygigs")
   };
 
@@ -80,11 +86,15 @@ const Add = () => {
               onChange={handleChange}
             />
             <label htmlFor="">Category</label>
+
             <select name="cat" id="cat" onChange={handleChange}>
               <option value="design">Design</option>
-              <option value="web">Web Development</option>
+              <option value="development">Web Development</option>
               <option value="animation">Animation</option>
               <option value="music">Music</option>
+              <option value="ai">Aritfical Intelligence</option>
+              <option value="video">Video</option>
+
             </select>
             <div className="images">
               <div className="imagesInputs">

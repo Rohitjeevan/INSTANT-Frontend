@@ -9,8 +9,7 @@ function MyGigs() {
   const currentUser = getCurrentUser();
 
   const queryClient = useQueryClient();
-  console.log(currentUser)
-
+  
   const { isLoading, error, data } = useQuery({
     queryKey: ["myGigs"],
     queryFn: () =>

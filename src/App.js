@@ -13,6 +13,7 @@ import Orders from "./pages/orders/Orders";
 import Messages from "./pages/messages/Messages";
 import Message from "./pages/message/Message";
 import MyGigs from "./pages/myGigs/MyGigs.jsx";
+import { Toaster } from 'react-hot-toast';
 import {
   QueryClient,
   QueryClientProvider,
@@ -22,6 +23,9 @@ import {
 import "./app.scss";
 import Pay from "./pages/pay/Pay";
 import Success from "./pages/success/Success";
+
+
+
 function App() {
   const queryClient = new QueryClient();
 
@@ -33,6 +37,7 @@ function App() {
         <Navbar />
         <Outlet />
         <Footer />
+        <Toaster/>
        </QueryClientProvider>
       </div>
     );

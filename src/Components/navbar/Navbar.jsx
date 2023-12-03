@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import "./Navbar.scss";
 import newRequest from "../../utils/newRequest";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 function Navbar() {
   const [active, setActive] = useState(false);
@@ -31,8 +32,9 @@ function Navbar() {
 
 const handlelLogout = async ()=>{
    try{
-     await newRequest.post("/auth/logout");
+      await newRequest.post("/auth/logout");
      localStorage.setItem("currentUser",null);
+     toast.success("User successfully logout");
      navigate("/")
    }catch(err){
     console.log(err)

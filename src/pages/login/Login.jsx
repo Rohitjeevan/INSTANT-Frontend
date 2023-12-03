@@ -4,6 +4,7 @@ import newRequest from "../../utils/newRequest";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../../Components/navbar/Navbar";
 
+
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -27,6 +28,7 @@ function Login() {
     }
   };
 
+  
   return (
     <>
 
@@ -40,6 +42,7 @@ function Login() {
           type="text"
           placeholder="johndoe"
           onChange={(e) => setUsername(e.target.value)}
+          required
         />
 
         <label htmlFor="">Password</label>
@@ -47,9 +50,11 @@ function Login() {
           name="password"
           type="password"
           onChange={(e) => setPassword(e.target.value)}
+          required
         />
+        <label className="forget"> Forget Password </label>
         <button type="submit">Login</button>
-        {error && error}
+        {error && error }
       </form>
     </div>
 

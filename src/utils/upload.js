@@ -18,11 +18,10 @@ const upload = async (file) => {
     );
 
     const url = res.data.url;
-    console.log("data is : "+ res.data);
-    console.log("url is : "+ url);
+
     return url;
   } catch (err) {
-    console.log(err);
+    
   }
 };
 
