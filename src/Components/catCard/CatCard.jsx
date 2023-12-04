@@ -1,8 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import PropTypes from 'prop-types';
 import "./CatCard.scss";
-
+import PropTypes from 'prop-types';
 export function CatCard({ card }) {
 
   return (
@@ -18,5 +17,13 @@ export function CatCard({ card }) {
     </>
   );
 }
+CatCard.propTypes = {
+  card: PropTypes.shape({
+    cat: PropTypes.string.isRequired,     // Adjust the type as needed
+    img: PropTypes.string.isRequired,     // Adjust the type as needed
+    desc: PropTypes.string.isRequired,    // Adjust the type as needed
+    title: PropTypes.string.isRequired,   // Adjust the type as needed
+  }).isRequired,
+};
 
 export default CatCard;

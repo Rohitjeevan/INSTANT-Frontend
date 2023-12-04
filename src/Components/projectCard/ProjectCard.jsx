@@ -1,5 +1,5 @@
 import React from "react";
-
+import PropTypes from 'prop-types';
 import "./ProjectCard.scss";
 
 function ProjectCard({ card }) {
@@ -18,5 +18,14 @@ function ProjectCard({ card }) {
    
   );
 }
+
+ProjectCard.propTypes = {
+  card: PropTypes.shape({
+    img: PropTypes.string.isRequired,        // Adjust the type as needed
+    pp: PropTypes.string.isRequired,         // Adjust the type as needed
+    cat: PropTypes.string.isRequired,        // Adjust the type as needed
+    username: PropTypes.string.isRequired,   // Adjust the type as needed
+  }).isRequired,
+};
 
 export default ProjectCard;

@@ -6,6 +6,8 @@ import noavatar from "../../img/noavatar.png";
 import star from "../../img/star.png"
 import like  from "../../img/like.png";
 import dislike  from "../../img/dislike.png";
+import PropTypes from 'prop-types';
+
 const Review = ({ review }) => {
   const { isLoading, error, data } = useQuery(
     {
@@ -17,6 +19,7 @@ const Review = ({ review }) => {
     },
   );
 
+  
 
   return (
     <div className="review">
@@ -55,4 +58,12 @@ const Review = ({ review }) => {
   );
 };
 
+
+Review.propTypes = {
+  review: PropTypes.shape({
+    userId: PropTypes.string.isRequired,   // Adjust the type as needed
+    star: PropTypes.number.isRequired,     // Adjust the type as needed
+    desc: PropTypes.string.isRequired,     // Adjust the type as needed
+  }).isRequired,
+};
 export default Review;

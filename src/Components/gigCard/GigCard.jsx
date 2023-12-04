@@ -6,6 +6,7 @@ import newRequest from "../../utils/newRequest";
 import noavatar from "../../img/noavatar.png";
 import star from "../../img/star.png"
 import heart from "../../img/heart.png"
+import PropTypes from 'prop-types';
 const GigCard = ({ item }) => {
   
   const { isLoading, error, data } = useQuery({
@@ -53,4 +54,15 @@ const GigCard = ({ item }) => {
   );
 };
 
+GigCard.propTypes = {
+  item: PropTypes.shape({
+    userId: PropTypes.string.isRequired,            // Adjust the type as needed
+    _id: PropTypes.string.isRequired,              // Adjust the type as needed
+    cover: PropTypes.string.isRequired,            // Adjust the type as needed
+    desc: PropTypes.string.isRequired,             // Adjust the type as needed
+    totalStars: PropTypes.number.isRequired,       // Adjust the type as needed
+    starNumber: PropTypes.number.isRequired,       // Adjust the type as needed
+    price: PropTypes.number.isRequired,            // Adjust the type as needed
+  }).isRequired,
+};
 export default GigCard;

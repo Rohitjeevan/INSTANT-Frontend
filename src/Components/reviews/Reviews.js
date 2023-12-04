@@ -3,6 +3,7 @@ import React from "react";
 import newRequest from "../../utils/newRequest";
 import Review from "../review/review.js";
 import "./Reviews.scss";
+import PropTypes from 'prop-types';
 const Reviews = ({ gigId }) => {
 
   const queryClient = useQueryClient()
@@ -54,6 +55,11 @@ const Reviews = ({ gigId }) => {
       </div>
     </div>
   );
+};
+
+
+Reviews.propTypes = {
+  gigId: PropTypes.string.isRequired,   // Adjust the type as needed
 };
 
 export default Reviews;

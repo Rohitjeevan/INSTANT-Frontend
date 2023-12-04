@@ -18,10 +18,9 @@ const upload = async (file) => {
     );
 
     const url = res.data.url;
-
     return url;
   } catch (err) {
-    
+    console.error(err)
   }
 };
 
